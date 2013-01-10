@@ -75,15 +75,31 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HitRecord.h" />
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="Rgb.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="Shpere.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="txTriangle.h" />
+    <ClInclude Include="Vec2d.h" />
+    <ClInclude Include="Vec3d.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HitRecord.cpp" />
+    <ClCompile Include="Ray.cpp" />
     <ClCompile Include="RealisticRayTracing.cpp" />
+    <ClCompile Include="Rgb.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Shpere.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="txTriangle.cpp" />
+    <ClCompile Include="Vec2d.cpp" />
+    <ClCompile Include="Vec3d.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
