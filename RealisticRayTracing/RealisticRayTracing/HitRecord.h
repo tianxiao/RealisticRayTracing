@@ -9,7 +9,7 @@ public:
 	txHitRecord(void);
 	~txHitRecord(void);
 
-	float t;
+	double t;
 	txVec3d normal;
 	txRgb color;
 };

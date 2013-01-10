@@ -8,6 +8,7 @@
 #include "Ray.h"
 #include "Shpere.h"
 #include "txTriangle.h"
+#include "HitRecord.h"
 
 inline double clamp(double x){return x<0?0:x>1?1:x;};
 inline int toInt(double x){return int (pow(clamp(x),1/2.2)*255+0.5);};
@@ -24,20 +25,32 @@ int _tmain(int argc, _TCHAR* argv[])
 	txVec3d v0(300.0,600.0,-800.0), v1(0.0,100.0,-1000.0), v2(450.0,20.0,-1000.0);
 	txTriangle tri(v0,v1,v2);
 
-	txVec3d *pixels = new txVec3d[w*h];
+	txRgb *pixels = new txRgb[w*h];
+	for (int i=0; i<w*h; i++){
+		pixels[i] = txRgb(); 
+	}
 
 	int c, r;
+	txHitRecord record;
 	txRay ray;
 	ray.SetD(rayDir);
 	for (int i=0; i<w*h; i++){
-		r = i%w;
-		c = i%h;
+		r = i/w;
+		c = i-r*w;
 		ray.SetO(txVec3d(r,c,0.0));
-
+		if ( shpere.Hit(ray,0.0,0.0,0.0,record)) {
+			pixels[i] = record.color;
+		}
 	}
 
+	FILE *f = fopen("..//image.ppm", "w");
+	fprintf(f,"P3\n%d %d\n%d\n", w, h, 255);
+	for (int i=0 ;i<w*h; i++) {
+		fprintf(f,"%d %d %d ", toInt(pixels[i].GetR()), toInt(pixels[i].GetG()), toInt(pixels[i].GetB()));
+	}
+	fclose(f);
 
-	delete pixels;
+	delete[] pixels;
 	return 0;
 }
 
