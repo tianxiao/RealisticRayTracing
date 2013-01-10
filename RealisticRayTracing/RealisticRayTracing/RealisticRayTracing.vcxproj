@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HitRecord.h" />
+    <ClInclude Include="precition.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Rgb.h" />
     <ClInclude Include="Shape.h" />

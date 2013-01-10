@@ -19,7 +19,11 @@ txShpere::~txShpere(void)
  bool txShpere::Hit(const txRay& r, float tmin, float tmax, float time, 
 	txHitRecord& record)  const
 {
-	//double a = r.GetD()*r.GetD();
+	double a = r.GetO()*r.GetO();
+	double b = 2*r.GetD()*(r.GetD()-o);
+	double c = (r.GetO()-o)*(r.GetO()-o);
+	double delta = b*b - 4*a*c;
+
 	return false;
 }
 

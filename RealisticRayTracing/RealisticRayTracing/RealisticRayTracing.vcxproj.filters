@@ -48,6 +48,9 @@
     <ClInclude Include="txTriangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="precition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

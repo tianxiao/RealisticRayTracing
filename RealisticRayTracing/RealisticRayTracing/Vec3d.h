@@ -11,12 +11,14 @@ public:
 
 	txVec3d operator-(const txVec3d & l) const ;
 	double operator*(const txVec3d & l) const ;
+	txVec3d operator*(double a) const;
+
+	friend txVec3d operator*(double a, const txVec3d &r);
 
 
 private:
 	double x, y, z;
 };
-
 
 inline txVec3d txVec3d::operator-(const txVec3d & l) const {
 	return txVec3d(x-l.x,y-l.y,z-l.z);
@@ -24,6 +26,14 @@ inline txVec3d txVec3d::operator-(const txVec3d & l) const {
 
 inline double txVec3d::operator*(const txVec3d & l) const {
 	return x*l.x + y*l.y + z*l.z;
+}
+
+inline txVec3d txVec3d::operator*(double a) const{
+	return txVec3d(a*x, a*y, a*z);
+}
+
+inline txVec3d operator*(double a, const txVec3d &r){
+	return txVec3d(a*r.x, a*r.y, a*r.z);
 }
 
 #endif
