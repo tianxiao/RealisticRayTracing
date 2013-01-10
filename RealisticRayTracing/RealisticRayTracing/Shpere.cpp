@@ -54,9 +54,11 @@ txShpere::~txShpere(void)
 		//record.color = color;
 		// set the color to linear with the distance
 		// http://www.cnblogs.com/clever101/archive/2011/09/21/2184403.html
-		// and see the doc folder to get the details
+		// http://www.cnblogs.com/clever101
+		// and see the doc folder to get the details about 
+		// 
 		//color.GetR();
-		record.color.SetR(1000);
+		record.color.SetR(color.GetR()*(1000.0-labda)/150.0);
 		return true;
 	}
 

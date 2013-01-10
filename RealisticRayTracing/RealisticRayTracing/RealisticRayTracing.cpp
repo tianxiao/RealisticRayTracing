@@ -43,7 +43,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
 
-	FILE *f = fopen("..//image.ppm", "w");
+	FILE *f = fopen("..//results//image.ppm", "w");
 	fprintf(f,"P3\n%d %d\n%d\n", w, h, 255);
 	for (int i=0 ;i<w*h; i++) {
 		fprintf(f,"%d %d %d ", toInt(pixels[i].GetR()), toInt(pixels[i].GetG()), toInt(pixels[i].GetB()));
