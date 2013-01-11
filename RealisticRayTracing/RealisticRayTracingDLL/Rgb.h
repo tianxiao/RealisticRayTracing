@@ -15,6 +15,8 @@ public:
 	void SetG(double g_) { g = g_; };
 	void SetB(double b_) { b = b_; };
 
+	void SetBlack() { r=0.0,g=0.0,b=0.0; };
+
 private:
 	double r, g, b;
 };
