@@ -39,10 +39,11 @@ bool txTriangle::Hit(const txRay& r, float tmin, float tmax, float time,
 
 	// TODO! check if it one the edge or on the triangle vertex
 	if (  alpha>-TRIANGLE_PRECISION_EPSILON && alpha<1+TRIANGLE_PRECISION_EPSILON
-		&&beta>-TRIANGLE_PRECISION_EPSILON&&beta<1+TRIANGLE_PRECISION_EPSILON){
+		&&beta>-TRIANGLE_PRECISION_EPSILON&&beta<1+TRIANGLE_PRECISION_EPSILON
+		&&(alpha+beta)<1-TRIANGLE_PRECISION_EPSILON){
 			record.normal = normal;
 			record.t = lambda;
-			record.color = color;
+			record.color.SetG(color.GetG()*(1000-lambda)/1000.0);
 			return true;
 	}
 	return false;

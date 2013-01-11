@@ -18,12 +18,12 @@ inline int toInt(double x){return int (pow(clamp(x),1/2.2)*255+0.5);};
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	const int w=500;
-	const int h=1000;
+	const int w=1000;
+	const int h=500;
 
 	txVec3d rayDir(0.0,0.0,-1.0);
 	
-	txShpere shpere(txVec3d(250.0,250.0,-1000.0),150.0);
+	txShpere shpere(txVec3d(250.0,250.0,-1000),150.0);
 
 	txVec3d triV0(300.0,500.0,-800.0),triV1(0.0,100.0,-1000.0), triV2(450.0,20.0,-1000.0);
 	txTriangle tri(triV0, triV1, triV2);

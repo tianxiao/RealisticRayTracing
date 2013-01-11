@@ -58,7 +58,7 @@ txShpere::~txShpere(void)
 		// and see the doc folder to get the details about 
 		// 
 		//color.GetR();
-		record.color.SetR(color.GetR()*(1000.0-labda)/150.0);
+		record.color.SetR(color.GetR()*(1000-labda)/150.0);
 		return true;
 	}
 
