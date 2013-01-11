@@ -1,6 +1,7 @@
 #pragma once
+#include "import.h"
 #include "Vec3d.h"
-class txRay
+class R_DECLDIR txRay
 {
 public:
 	txRay(void);

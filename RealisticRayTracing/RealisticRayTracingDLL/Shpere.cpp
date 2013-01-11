@@ -44,7 +44,7 @@ txShpere::~txShpere(void)
 		return true;
 	} else if (delta<-txEpsilon){
 		return false;
-	} else {
+	} else if (delta>txEpsilon){
 		labda = (-b + sqrt(delta))/(2.0*a);
 		labda1 = (-b - sqrt(delta))/(2.0*a);
 		if (labda>labda1) labda = labda1;
@@ -62,7 +62,7 @@ txShpere::~txShpere(void)
 		return true;
 	}
 
-	
+	return false;
 }
 
  bool txShpere::ShadowHit(const txRay& r, float tmin, float tmax, float time) const

@@ -1,9 +1,10 @@
 #pragma once
+#include "import.h"
 #include "shape.h"
 #include "Vec3d.h"
 #include "Rgb.h"
 
-class txShpere :
+class R_DECLDIR txShpere :
 	public txShape
 {
 public:

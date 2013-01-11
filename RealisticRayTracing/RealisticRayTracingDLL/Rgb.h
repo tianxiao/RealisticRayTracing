@@ -1,5 +1,7 @@
 #pragma once
-class txRgb
+#include "import.h"
+
+class R_DECLDIR txRgb
 {
 public:
 

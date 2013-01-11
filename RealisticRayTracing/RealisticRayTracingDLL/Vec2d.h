@@ -1,5 +1,6 @@
 #pragma once
-class txVec2d
+#include "import.h"
+class R_DECLDIR txVec2d
 {
 public:
 

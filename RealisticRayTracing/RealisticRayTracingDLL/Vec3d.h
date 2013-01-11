@@ -1,9 +1,10 @@
 #ifndef __RAYTRACING_VEC3D__
 #define __RAYTRACING_VEC3D__
 //#pragma once
+#include "import.h"
 #include <assert.h>
 #include <math.h>
-class txVec3d
+class R_DECLDIR txVec3d
 {
 public:
 	txVec3d(void);
@@ -19,6 +20,8 @@ public:
 	double operator*(const txVec3d & l) const ;
 	txVec3d operator*(double a) const;
 	txVec3d operator/(double a) const;
+	txVec3d operator%(const txVec3d &r) const;
+	
 
 	friend txVec3d operator*(double a, const txVec3d &r);
 
@@ -27,9 +30,9 @@ public:
 	void SetY(double y_) { y=y_; };
 	void SetZ(double z_) { z=z_; };
 	
-	double GetX() { return x; };
-	double GetY() { return y; };
-	double GetZ() { return z; };
+	double GetX() const { return x; };
+	double GetY() const { return y; };
+	double GetZ() const { return z; };
 
 private:
 	double x, y, z;

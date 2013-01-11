@@ -4,11 +4,14 @@
 #include "stdafx.h"
 #include <stdlib.h>
 #include <math.h>
-#include "Vec3d.h"
-#include "Ray.h"
-#include "Shpere.h"
-#include "txTriangle.h"
-#include "HitRecord.h"
+#include "../RealisticRayTracingDLL/Vec3d.h"
+#include "../RealisticRayTracingDLL/Ray.h"
+#include "../RealisticRayTracingDLL/Shpere.h"
+#include "../RealisticRayTracingDLL/txTriangle.h"
+#include "../RealisticRayTracingDLL/HitRecord.h"
+#include "../RealisticRayTracingDLL/txTriangle.h"
+
+#define SCENE_INFINITE 100000
 
 inline double clamp(double x){return x<0?0:x>1?1:x;};
 inline int toInt(double x){return int (pow(clamp(x),1/2.2)*255+0.5);};
@@ -22,8 +25,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 
 	txShpere shpere(txVec3d(250.0,250.0,-1000.0),150.0);
-	txVec3d v0(300.0,600.0,-800.0), v1(0.0,100.0,-1000.0), v2(450.0,20.0,-1000.0);
-	txTriangle tri(v0,v1,v2);
+
+	txVec3d triV0(300.0,400.0,-800.0),triV1(0.0,100.0,-1000.0), triV2(450.0,20.0,-1000.0);
+	txTriangle tri(triV0, triV1, triV2);
 
 	txRgb *pixels = new txRgb[w*h];
 	for (int i=0; i<w*h; i++){
@@ -32,15 +36,29 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	int c, r;
 	txHitRecord record;
+	txHitRecord recordtri;
 	txRay ray;
 	ray.SetD(rayDir);
+	txRgb temp(0.0,0.0,0.0);
 	for (int i=0; i<w*h; i++){
 		r = i/w;
 		c = i-r*w;
+		// z buffer check distance 
+		double z=SCENE_INFINITE;
 		ray.SetO(txVec3d(r,c,0.0));
 		if ( shpere.Hit(ray,0.0,0.0,0.0,record)) {
-			pixels[i] = record.color;
+			if (record.t<z) {
+				z = record.t;
+				temp = record.color;
+			}
 		}
+		//if ( tri.Hit(ray,0.0,0.0,0.0,recordtri)){
+		//	if (recordtri.t<z) {
+		//		z = recordtri.t;
+		//		temp = recordtri.color;
+		//	}
+		//}
+		pixels[i] = temp;
 	}
 
 	FILE *f = fopen("..//results//image.ppm", "w");

@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <tchar.h>
 
-// Disable the fopen warnning
-#pragma warning(disable:4996)
+
 
 // TODO: reference additional headers your program requires here

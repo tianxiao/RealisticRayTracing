@@ -1,7 +1,8 @@
 #pragma once
+#include "import.h"
 class txRay;
 class txHitRecord;
-class txShape
+class R_DECLDIR txShape
 {
 public:
 	txShape(void);
